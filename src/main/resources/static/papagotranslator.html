@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div>
+    <input id="korean" placeholder="한국말"><br>
+    <input id="english" placeholder="English"><br>
+    <button id="btnK2E">translateK2E</button>
+    <button id="btnE2K">translateE2K</button>
+    </div>
+    <script>
+        $("#btnK2E").click(function(){
+            let korean = $("#korean").val();
+            let english = $("#english").val();
+            $.ajax({
+                url: "/translateK2E",
+                type: "POST",
+                data: {
+                    korean: korean,
+                    english: english
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        })
+        $("#btnE2K").click(function(){
+            let korean = $("#korean").val();
+            let english = $("#english").val();
+            $.ajax({
+                url: "/translateE2K",
+                type: "POST",
+                data: {
+                    korean: korean,
+                    english: english
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>

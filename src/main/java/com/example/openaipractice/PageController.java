@@ -11,4 +11,20 @@ public class PageController {
             System.out.println("wordchain");
             return "wordchain.html";
         }
+        @RequestMapping(value = "/papagotranslator", method = RequestMethod.GET)
+        public String goTranslator() {
+            System.out.println("papagotranslator");
+            return "papagotranslator.html";
+        }
+
+        @RequestMapping(value = "/gptSpeakKorean", method = RequestMethod.GET)
+        public String goGptSpeakKorean() {
+            System.out.println("gptSpeakKorean");
+            return "gptSpeakKorean.html";
+        }
+        @RequestMapping(value = "/gptSpeakKoreanWithHistory", method = RequestMethod.GET)
+        public String goGptSpeakKoreanWithHistory() {
+            System.out.println("gptSpeakKorean");
+            return "gptSpeakKoreanWithHistory.html";
+        }
 }

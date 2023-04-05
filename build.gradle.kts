@@ -18,6 +18,8 @@ repositories {
     mavenCentral()
 }
 
+
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.theokanning.openai-gpt3-java:api:0.12.0")
@@ -25,6 +27,7 @@ dependencies {
     implementation("com.theokanning.openai-gpt3-java:client:0.12.0")
     implementation("org.thymeleaf:thymeleaf:3.1.1.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("com.google.code.gson:gson:2.7")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -36,3 +39,10 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType<JavaExec> {
+    systemProperty("console.encoding", "UTF-8")
+}

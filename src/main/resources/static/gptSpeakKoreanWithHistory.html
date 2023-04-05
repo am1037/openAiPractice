@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <textarea id="topic" placeholder="overall topic" cols="60" rows="5"></textarea><br>
+    <textarea id="history" placeholder="talk history" cols="60" rows="15" disabled="disabled"></textarea><br>
+    <textarea id="input" placeholder="input" cols="60" rows="10"></textarea><br>
+    <button id="btnSpeak">Speak</button>
+
+    <script>
+        let history = "";
+        let lastAnswer = "";
+        $('#btnSpeak').click(function (){
+            console.log("clicked");
+            $.ajax({
+                url: "/askAIWithHistory",
+                type: "POST",
+                data: {
+                    topic:$("#topic").val(),
+                    question: $("#input").val(),
+                    lastAnswer: lastAnswer
+                },
+                success: function (data) {
+                    console.log(data);
+                    history += "Human : " + $("#input").val() + "\n";
+                    history += "AI : " + data[1] + "\n";
+                    lastAnswer = data[0];
+                    $("#history").html(history);
+                    $("#input").val("");
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>
