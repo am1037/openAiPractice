@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dealingDB.mapper">
+    <select id="selectConservation" resultType="com.example.dealingDB.ConservationVO">
+        select * from response where id = #{id}
+    </select>
+    <insert id="insertConservation" parameterType="com.example.dealingDB.ConservationVO">
+        insert into conservation (id, object, created, model, prompt_tokens, completion_tokens, total_tokens, role, content, direction)
+        values (#{id}, #{object}, #{created}, #{model}, #{prompt_tokens}, #{completion_tokens}, #{total_tokens}, #{role}, #{content}, #{direction})
+    </insert>
+</mapper>
+
+<!--        private String id;-->
+<!--        private String object;-->
+<!--        private BigInteger created;-->
+<!--        private String model;-->
+<!--        private int prompt_tokens;-->
+<!--        private int completion_tokens;-->
+<!--        private int total_tokens;-->
+<!--        private String role;-->
+<!--        private String content;-->

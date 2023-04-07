@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PageController {
+        @RequestMapping(value = "/", method = RequestMethod.GET)
+        public String index() {
+            System.out.println("index");
+            return "index.html";
+        }
         @RequestMapping(value = "/wordchain", method = RequestMethod.GET)
         public String goWordchain() {
             System.out.println("wordchain");
@@ -26,5 +31,10 @@ public class PageController {
         public String goGptSpeakKoreanWithHistory() {
             System.out.println("gptSpeakKorean");
             return "gptSpeakKoreanWithHistory.html";
+        }
+        @RequestMapping(value = "/kakaoMap", method = RequestMethod.GET)
+        public String goKakaoMap() {
+            System.out.println("KakaoMap");
+            return "kakaoMap.html";
         }
 }
