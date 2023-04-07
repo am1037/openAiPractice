@@ -37,4 +37,10 @@ public class PageController {
             System.out.println("KakaoMap");
             return "kakaoMap.html";
         }
+
+        @RequestMapping(value = "/twoais", method = RequestMethod.GET)
+        public String gotwoais() {
+            System.out.println("twoais");
+            return "twoais.html";
+        }
 }

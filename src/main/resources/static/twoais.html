@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td style="text-align: center;" colspan="2">
+            <input id="topic" placeholder="overall topic" width="60">
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;" colspan="2">
+            <textarea id="conversation" placeholder="talk here" rows="20" cols="60"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input id="AI1_name" placeholder="AI1 name" width="45"><br>
+            <textarea id="AI1_system" placeholder="AI1 profile" rows="20" cols="30"></textarea><br>
+        </td>
+        <td>
+            <input id="AI2_name" placeholder="AI2 name" width="45"><br>
+            <textarea id="AI2_system" placeholder="AI2 profile" rows="20" cols="30"></textarea><br>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;" colspan="2">
+            <select id="next_Baton">
+                <option value=0>AI 1</option>
+                <option value=1>AI 2</option>
+            </select>
+            <button id="btn">talk</button>
+        </td>
+    </tr>
+</table>
+
+<script>
+    let last_Script = "";
+    let temp_Script = "";
+    $('#btn').click(function (){
+        let AI_names = [];
+        let AI_systems = [];
+        AI_names.push($('#AI1_name').val());
+        AI_names.push($('#AI2_name').val());
+        AI_systems.push($('#AI1_system').val());
+        AI_systems.push($('#AI2_system').val());
+
+        $.ajax({
+            url: '/twoaisButton',
+            type: 'POST',
+            data: {
+                jsonString : JSON.stringify({
+                topic: $('#topic').val(),
+                context: $('#context').val(),
+                last_Script: last_Script,
+                AI_names: AI_names,
+                AI_systems: AI_systems,
+                next_Baton: $('#next_Baton').val()
+            })},
+            success: function (data) {
+                last_Script = temp_Script;
+                temp_Script = data;
+                console.log("last script is >> " + last_Script);
+                console.log("temp script is >> " + temp_Script);
+            }
+        })
+    })
+</script>
+
+</body>
+</html>
