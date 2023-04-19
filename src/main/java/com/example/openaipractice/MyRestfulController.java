@@ -64,6 +64,7 @@ public class MyRestfulController {
         public String twoaisButton(@RequestParam("jsonString") String str) {
             try {
                 roundtable = mapper.readValue(str, Roundtable.class);
+                System.out.println(roundtable.toString());
                 talkClassForRoundTable.setRoundtable(roundtable);
                 str = talkClassForRoundTable.sendRequest();
             } catch (JsonProcessingException e) {

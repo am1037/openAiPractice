@@ -43,4 +43,16 @@ public class PageController {
             System.out.println("twoais");
             return "twoais.html";
         }
+
+        @RequestMapping(value = "/prompt", method = RequestMethod.GET)
+        public String goprompt() {
+            System.out.println("prompt");
+            return "prompt.html";
+        }
+
+        @RequestMapping(value = "/spotify", method = RequestMethod.GET)
+        public String gospotify() {
+            System.out.println("spotify");
+            return "spotify.html";
+        }
 }

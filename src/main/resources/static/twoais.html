@@ -40,7 +40,7 @@
 
 <script>
     let last_Script = "";
-    let temp_Script = "";
+    let history = "";
     $('#btn').click(function (){
         let AI_names = [];
         let AI_systems = [];
@@ -62,10 +62,10 @@
                 next_Baton: $('#next_Baton').val()
             })},
             success: function (data) {
-                last_Script = temp_Script;
-                temp_Script = data;
+                last_Script = data;
+                history += AI_names[$('#next_Baton').val()] +" : "+ last_Script + "\n";
                 console.log("last script is >> " + last_Script);
-                console.log("temp script is >> " + temp_Script);
+                $('#conversation').html(history);
             }
         })
     })
